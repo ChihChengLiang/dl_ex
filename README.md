@@ -1,3 +1,9 @@
+# Working on stanford_dl_ex
+
+This is my homework copy of stanford_dl_ex.
+
+For more information about stanford_dl_ex, please refer to the following secion.
+
 stanford_dl_ex
 ==============
 
