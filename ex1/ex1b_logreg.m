@@ -11,6 +11,8 @@ addpath ../common/minFunc_2012/minFunc/compiled
 binary_digits = true;
 [train,test] = ex1_load_mnist(binary_digits);
 
+
+
 % Add row of 1s to the dataset to act as an intercept term.
 train.X = [ones(1,size(train.X,2)); train.X]; 
 test.X = [ones(1,size(test.X,2)); test.X];
@@ -20,7 +22,7 @@ m=size(train.X,2);
 n=size(train.X,1);
 
 % Train logistic regression classifier using minFunc
-options = struct('MaxIter', 100);
+options = struct('MaxIter', 100,'useMex',0);
 
 % First, we initialize theta to some small random values.
 theta = rand(n,1)*0.001;
@@ -40,10 +42,10 @@ fprintf('Optimization took %f seconds.\n', toc);
 % time for your logistic_regression.m and logistic_regression_vec.m implementations.
 %
 % Uncomment the lines below to run your vectorized code.
-%theta = rand(n,1)*0.001;
-%tic;
-%theta=minFunc(@logistic_regression_vec, theta, options, train.X, train.y);
-%fprintf('Optimization took %f seconds.\n', toc);
+theta = rand(n,1)*0.001;
+tic;
+theta=minFunc(@logistic_regression_vec, theta, options, train.X, train.y);
+fprintf('Optimization took %f seconds.\n', toc);
 
 % Print out training accuracy.
 tic;
